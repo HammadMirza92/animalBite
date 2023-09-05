@@ -12,19 +12,15 @@ import html2canvas from 'html2canvas';
 export class AppComponent {
   @ViewChild('captureElement', { static: false }) captureElement!: ElementRef;
 
-  // bite:any;
-  // activity:any;
-  // DOBMinorOnly:any;
-  // victimName:any;
-  // victimAddress:any;
 
 
+  title = 'animalBite';
   animalBiteForm: FormGroup  = new FormGroup({});
 
   constructor(private formBuilder: FormBuilder) {
-
+    this.selectedDateTime = new Date();
   }
-
+  selectedDateTime: Date;
 
 
   ngOnInit(): void {
@@ -146,33 +142,30 @@ export class AppComponent {
     // Handle console details logic
   }
 
+  // generatePDF() {
+  //   const element = document.getElementById('pdf-content');
 
-  // captureScreenshotAndGeneratePdf(value:any) {
-  //   this.bite = value.bite;
-  //   this.activity = value.activity;
-  //   this.DOBMinorOnly = value.DOBMinorOnly;
-  //   this.victimName = value.victimName;
-  //   this.victimAddress = value.victimAddress;
-
-  //   this.generatePdf();
+  //   if (element) {
+  //     html2canvas(element).then((canvas) => {
+  //       const imgData = canvas.toDataURL('image/png');
+  //       const pdf = new (window as any).jsPDF();
+  //       pdf.addImage(imgData, 'PNG', 0, 0);
+  //       pdf.save('form-data.pdf');
+  //     });
+  //   } else {
+  //     console.error("Element with ID 'pdf-content' not found in the DOM.");
+  //   }
   // }
 
-  generatePdf(){
+  captureScreenshotAndGeneratePdf() {
     const elementToCapture = this.captureElement.nativeElement;
-
-    const pdf = new jsPDF('p', 'mm', 'a4');
 
     if (elementToCapture) {
       html2canvas(elementToCapture).then((canvas) => {
         const imgData = canvas.toDataURL('image/png');
-        const imgWidth = 210; // mm (A4 width)
-        const imgHeight = (canvas.height * imgWidth) / canvas.width;
-
-        // Add the captured image to the PDF
-        pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
-
-        // Save or open the PDF
-        pdf.save('animal-bite.pdf');
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        pdf.addImage(imgData, 'PNG', 0, 0, pdf.internal.pageSize.getWidth(), pdf.internal.pageSize.getHeight());
+        pdf.save('screenshot.pdf');
       });
     } else {
       console.error("Element to capture not found.");

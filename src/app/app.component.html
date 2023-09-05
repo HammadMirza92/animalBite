@@ -357,9 +357,13 @@
       </div>
     </div>
 
-    <button mat-raised-button (click)="submitForm(animalBiteForm.value)" color="primary">Submit</button>
-    <button mat-raised-button (click)="consoleDetails()" color="primary">Console Details</button>
-    <button mat-raised-button (click)="generatePdf()" color="primary">Generate PDF</button>
+    <div class="btn-container">
+      <button mat-raised-button (click)="captureScreenshotAndGeneratePdf()" color="accent"><mat-icon>cloud_download</mat-icon>Generate PDF</button>
+      <button mat-raised-button (click)="consoleDetails()" color="warn">Console Details</button>
+      <button mat-raised-button (click)="submitForm(animalBiteForm.value)" color="primary">Submit</button>
+    </div>
+
+
 
   </form>
 </div>

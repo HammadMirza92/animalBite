@@ -27,4 +27,11 @@ input{
 mat-form-field{
   width: 100%;
 }
-/* Center-align the radio buttons */
+
+.btn-container{
+  display: flex;
+  justify-content: end;
+}
+button{
+  margin: 20px;
+}
