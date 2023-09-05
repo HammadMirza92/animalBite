@@ -26,6 +26,7 @@ export class AppComponent {
   victimIncidentTime:any;
   vicitimGender:any;
   victimSchool:any;
+
   victimAgeInYears:any;
   victimDOB:any;
   victimIsMinor:any;
