@@ -1,0 +1,168 @@
+<div class="main-container container">
+  <form [formGroup]="animalBiteForm">
+
+    <div class="row">
+      <div class="col-md-4">
+
+        <section>
+
+          <h3 class="section-heading"> Victim Information :</h3>
+
+          <mat-form-field appearance="outline" >
+            <mat-label>Victim Name</mat-label>
+            <input formControlName="victimName" matInput/>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" >
+            <mat-label>victim Address</mat-label>
+            <textarea matInput  formControlName="victimAddress" rows="4"></textarea>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" >
+            <mat-label>victim Phone Number</mat-label>
+            <input matInput type="tel" formControlName="victimph">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" >
+            <mat-label>Victim Alt#</mat-label>
+            <input formControlName="victimAlt" matInput/>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" >
+            <mat-label>Victim Email</mat-label>
+            <input formControlName="victimEmail" matInput type="email"/>
+          </mat-form-field>
+
+          <!-- <mat-form-field >
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="datepicker">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+            <mat-datepicker #datepicker>
+            </mat-datepicker>
+          </mat-form-field> -->
+
+          <!-- <mat-form-field appearance="outline">
+            <mat-label>Gender</mat-label>
+            <mat-select formControlName="gender">
+              <mat-option value="male">Male</mat-option>
+              <mat-option value="female">Female</mat-option>
+            </mat-select>
+          </mat-form-field> -->
+          <mat-radio-group formControlName="vicitimGender">
+            <!-- <mat-label>Gender</mat-label> -->
+            <mat-radio-button value="male">Male</mat-radio-button>
+            <mat-radio-button value="female">Female</mat-radio-button>
+          </mat-radio-group>
+
+          <mat-form-field appearance="outline" >
+            <mat-label>School ?</mat-label>
+            <input formControlName="victimSchool" matInput />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" >
+            <mat-label>Age in years</mat-label>
+            <input formControlName="victimAgeInYears" matInput type="number"/>
+          </mat-form-field>
+
+          <!-- date of birth -->
+
+          <mat-radio-group formControlName="victimIsMinor">
+            <!-- <mat-label>Gender</mat-label> -->
+            <mat-radio-button value="yes">Yes</mat-radio-button>
+            <mat-radio-button value="no">No</mat-radio-button>
+          </mat-radio-group>
+
+
+        </section>
+
+
+        <section>
+
+          <h3 class="section-heading">If victim is a minor: (Parent / Gaurdian)</h3>
+
+          <mat-form-field appearance="outline" >
+            <mat-label>Name</mat-label>
+            <input formControlName="vicitimMinorName" matInput/>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" >
+            <mat-label>Address</mat-label>
+            <textarea matInput  formControlName="vicitimMinorAddress" rows="4"></textarea>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" >
+            <mat-label>Phone Number</mat-label>
+            <input matInput type="tel" formControlName="vicitimMinorph">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" >
+            <mat-label>Email</mat-label>
+            <input formControlName="vicitimMinorEmail" matInput type="email"/>
+          </mat-form-field>
+
+          <mat-radio-group formControlName="vicitimMinorFamiliarAnimal">
+            <mat-label>Was victim familiar with animal?</mat-label>
+            <mat-radio-button value="yes">Yes</mat-radio-button>
+            <mat-radio-button value="no">No</mat-radio-button>
+          </mat-radio-group>
+
+          <mat-radio-group formControlName="vicitimMinorTreatment">
+            <!-- <mat-label>Was victim familiar with animal?</mat-label> -->
+            <mat-radio-button value="hospitalized">Hospitalized</mat-radio-button>
+            <mat-radio-button value="outpatient">Outpatient</mat-radio-button>
+            <mat-radio-button value="homeTreatment">Home Treatment</mat-radio-button>
+          </mat-radio-group>
+
+          <mat-form-field appearance="outline" >
+            <mat-label>Medical facility</mat-label>
+            <input formControlName="vicitimMinorMedicalFacility" matInput/>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" >
+            <mat-label>Contact person & phone</mat-label>
+            <input matInput formControlName="vicitimMinorOtherContactPersonPh">
+          </mat-form-field>
+
+        </section>
+
+      </div>
+      <div class="col-md-4">
+
+        <h3 class="section-heading">Section 1: Victim Information :</h3>
+        <mat-form-field appearance="outline" >
+          <mat-label>Victim Name</mat-label>
+          <input formControlName="victimName" matInput/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" >
+          <mat-label>victim Address</mat-label>
+          <input formControlName="victimAddress" matInput/>
+        </mat-form-field>
+
+      </div>
+      <div class="col-md-4" style=" border-right: 1px solid  rgb(219, 219, 219);">
+
+        <h3 class="section-heading">Section 1: Victim Information :</h3>
+        <mat-form-field appearance="outline" >
+          <mat-label>Victim Name</mat-label>
+          <input formControlName="victimName" matInput/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" >
+          <mat-label>victim Address</mat-label>
+          <input formControlName="victimAddress" matInput/>
+        </mat-form-field>
+
+      </div>
+    </div>
+
+    <button mat-raised-button (click)="submitForm(animalBiteForm.value)">Submit</button>
+    <button mat-raised-button (click)="consoleDetails()">Console Details</button>
+    <button mat-raised-button (click)="generatePDF()">Generate PDF</button>
+
+  </form>
+</div>
+
+
+
