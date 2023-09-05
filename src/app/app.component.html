@@ -1,4 +1,4 @@
-<div class="main-container container" #captureElement>
+<div class="main-container container" >
   <form [formGroup]="animalBiteForm">
 
     <div class="row">
@@ -358,7 +358,7 @@
     </div>
 
     <div class="btn-container">
-      <button mat-raised-button (click)="captureScreenshotAndGeneratePdf()" color="accent"><mat-icon>cloud_download</mat-icon>Generate PDF</button>
+      <button mat-raised-button (click)="getPDF(animalBiteForm.value)" color="accent"><mat-icon>cloud_download</mat-icon>Generate PDF</button>
       <button mat-raised-button (click)="consoleDetails()" color="warn">Console Details</button>
       <button mat-raised-button (click)="submitForm(animalBiteForm.value)" color="primary">Submit</button>
     </div>
@@ -369,3 +369,61 @@
 </div>
 
 
+
+<div class="main-container container" #captureElement>
+
+  <div class="row">
+
+    <div class="col-md-4">
+
+      <span> <b> Bite : </b>{{bite}}<br></span>
+
+      <section>
+
+        <h3 class="section-heading"> Victim Information :</h3>
+
+        <span> <b>Victim Name : </b>{{victimName}} <br></span>
+
+        <span> <b>Victim Address : </b>{{victimAddress}} <br></span>
+
+        <span> <b> Victim Phone Number : </b>{{victimph}} <br></span>
+
+        <span> <b>Victim Alt# : </b>{{victimAlt}} <br></span>
+
+        <span> <b> Victim Email :</b> {{victimEmail}} <br></span>
+
+        <span> <b>Incident date : </b>{{victimIncidentDate  }} <br></span>
+
+        <span> <b>Time ( AM/ M ) : </b>{{victimIncidentTime}} <br></span>
+
+        <span> <b>Gender : </b>{{vicitimGender}} <br></span>
+
+        <span> <b>  School ? :</b> {{victimSchool}} <br></span>
+
+        <span> <b>  Age in years :  </b>{{victimAgeInYears}}  <br></span>
+
+        <span> <b> Date of birth : </b>{{victimDOB }} <br></span>
+
+
+        <span> <b>Minor : </b>{{victimIsMinor}} <br></span>
+
+
+      </section>
+
+
+    </div>
+    <div class="col-md-4">
+
+
+
+
+
+    </div>
+    <div class="col-md-4" style=" border-right: 1px solid  rgb(219, 219, 219);">
+
+
+    </div>
+  </div>
+
+
+</div>

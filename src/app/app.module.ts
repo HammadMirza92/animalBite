@@ -14,10 +14,12 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatIconModule} from '@angular/material/icon';
+import { PdfComponent } from './pdf/pdf.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PdfComponent
   ],
   imports: [
     BrowserModule,

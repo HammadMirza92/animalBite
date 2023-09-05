@@ -2,6 +2,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -12,12 +13,27 @@ import html2canvas from 'html2canvas';
 export class AppComponent {
   @ViewChild('captureElement', { static: false }) captureElement!: ElementRef;
 
+  bite:any;
+  activity:any;
+  DOBMinorOnly:any;
 
+  victimName:any;
+  victimAddress:any;
+  victimph:any;
+  victimAlt:any;
+  victimEmail:any;
+  victimIncidentDate:any;
+  victimIncidentTime:any;
+  vicitimGender:any;
+  victimSchool:any;
+  victimAgeInYears:any;
+  victimDOB:any;
+  victimIsMinor:any;
 
   title = 'animalBite';
   animalBiteForm: FormGroup  = new FormGroup({});
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,private datePipe:DatePipe) {
     this.selectedDateTime = new Date();
   }
   selectedDateTime: Date;
@@ -157,7 +173,48 @@ export class AppComponent {
   //   }
   // }
 
-  captureScreenshotAndGeneratePdf() {
+  getPDF(animalBiteForm:any){
+    this.bite = animalBiteForm.bite;
+    this.activity =animalBiteForm.activity;
+    this.DOBMinorOnly = animalBiteForm.DOBMinorOnly;
+    // if(animalBiteForm.DOBMinorOnly){
+    //   this.DOBMinorOnly = this.datePipe.transform(animalBiteForm.DOBMinorOnly, 'dd/MM/yyyy');
+    // }else{
+    //   this.DOBMinorOnly = animalBiteForm.DOBMinorOnly;
+    // }
+    this.victimName =animalBiteForm.victimName;
+    this.victimAddress = animalBiteForm.victimAddress;
+    this.victimph = animalBiteForm.victimph;
+    this.victimAlt = animalBiteForm.victimAlt;
+    this.victimEmail =animalBiteForm.victimEmail;
+    this.victimIncidentDate = animalBiteForm.victimIncidentDate;
+    // if(animalBiteForm.victimIncidentDate){
+    //   this.victimIncidentDate = this.datePipe.transform(animalBiteForm.victimIncidentDate, 'dd/MM/yyyy');
+    // }else{
+    //   this.victimIncidentDate = animalBiteForm.victimIncidentDate;
+    // }
+    this.victimIncidentTime = animalBiteForm.victimIncidentTime;
+    this.vicitimGender =animalBiteForm.vicitimGender;
+    this.victimSchool = animalBiteForm.victimSchool;
+    this.victimAgeInYears =animalBiteForm.victimAgeInYears;
+    this.victimDOB = animalBiteForm.victimDOB;
+    // if(animalBiteForm.victimDOB){
+    //   this.victimDOB = this.datePipe.transform(animalBiteForm.victimDOB, 'dd/MM/yyyy');
+    // }else{
+    //   this.victimDOB = animalBiteForm.victimDOB;
+    // }
+    this.victimIsMinor = animalBiteForm.victimIsMinor;
+
+
+    const delay = 2000;
+
+    setTimeout(() => {
+      this.generatePDF();
+    }, delay);
+
+  }
+  generatePDF( ) {
+
     const elementToCapture = this.captureElement.nativeElement;
 
     if (elementToCapture) {
