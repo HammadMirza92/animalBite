@@ -4,7 +4,7 @@
 }
 .section-heading{
 
-  background-color: gray;
+  background-color: #0c214a;
   color: white;
   text-align: center;
   padding: 10px 0px;
@@ -14,11 +14,15 @@
 .col-md-4{
   border-left: 1px solid rgb(219, 219, 219);
   border-bottom: 3px solid gray;
-  border-top: 3px solid gray;
+  border-top: 3px solid #ac0000;
   padding-top: 10px;
   border-radius: 4px;
-
-
+}
+.notes{
+  font-weight: bold;
+}
+input{
+  margin-bottom: 10px;
 }
 mat-form-field{
   width: 100%;
